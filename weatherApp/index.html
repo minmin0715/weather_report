@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8" lang="en" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="assets/weather.css">
+</head>
+
+<body ng-controller="weatherCtrl">
+    <div class="container">
+        <div class = "">
+        <h1>Weather Report</h1>
+        <span>Enter your zipcode:</span>
+        <input type="text" ng-model="zipcode">
+        <button type="button" ng-click="getData()">Submit</button>
+        </div>
+            <table class="table">
+                <thead>
+                    <th><a ng-click="reverse=!reverse;order('title', reverse)">Date</a></th>
+                    <th>Precipitation</th>
+                    <th>Average Humidity</th>
+                    <th>Average Temp</th>
+                    <th>Average Wind Speed</th>
+                    <th>Post Code</th>
+                    <th>Country</th>
+                </thead>
+                <tbody ng-repeat="data in weatherData">
+                    <td ng-bind="data.timestamp.substr(0,10)"></td>
+                    <td ng-bind="data.precip"></td>
+                    <td ng-bind="data.relHumAvg"></td>
+                    <td ng-bind="data.tempAvg"></td>
+                    <td ng-bind="data.windSpdAvg"></td>
+                    <td ng-bind="data.postal_code"></td>
+                    <td ng-bind="data.country"></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/getWeather.js"></script>
+</body>
+
+</html>
